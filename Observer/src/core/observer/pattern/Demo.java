@@ -1,26 +1,41 @@
 package core.observer.pattern;
 
+import java.io.File;
+
 public class Demo {
-    public static void main(String[] args) {
+	public static void main(String[] args) {
+        Editor editor = new Editor();
         
-    	Editor editor = new Editor();
-        editor.events.subscribe("open", new LogOpenListener("/path/to/log/file.txt"));
-        editor.events.subscribe("save", new EmailNotificationListener("admin@example.com"));
-        
+        EventListener openListener = new EventListener() {
+            @Override
+            public void update(String eventType, File file) {
+                System.out.println("File opened: " + file.getPath());
+            }
+        };
+
+        EventListener saveListener = new EventListener() {
+            @Override
+            public void update(String eventType, File file) {
+                System.out.println("File saved: " + file.getPath());
+            }
+        };
+
+        editor.getEvents().subscribe("open", openListener);
+        editor.getEvents().subscribe("save", saveListener);
+
         try {
             editor.openFile("test.txt");
             editor.saveFile();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        
-       
-        editor.events.unsubscribe("open", new LogOpenListener("/path/to/log/file.txt"));
-        editor.events.unsubscribe("save", new EmailNotificationListener("admin@example.com"));
-        
-        try {
-            editor.openFile("test.txt");
+
+            // Unsubscribe openListener
+            editor.getEvents().unsubscribe("open", openListener);
+
+            // Trying to open another file. The openListener won't be notified this time.
+            editor.openFile("anotherTest.txt");
+
+            // Save event should still notify saveListener.
             editor.saveFile();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

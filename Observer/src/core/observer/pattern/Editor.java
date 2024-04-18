@@ -9,7 +9,11 @@ public class Editor {
     public Editor() {
         this.events = new EventManager("open", "save");
     }
-
+    
+    public EventManager getEvents() {
+        return this.events;
+    }
+    
     public void openFile(String filePath) {
         this.file = new File(filePath);
         events.notify("open", file);
