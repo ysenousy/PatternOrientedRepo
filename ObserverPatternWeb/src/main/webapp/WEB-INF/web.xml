@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" version="5.0">
+  <servlet>
+    <description></description>
+    <display-name>StockServlet</display-name>
+    <servlet-name>StockServlet</servlet-name>
+    <servlet-class>observer.servlets.StockServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>StockServlet</servlet-name>
+    <url-pattern>/StockServlet</url-pattern>
+  </servlet-mapping>
+  <display-name>ObserverPatternWeb</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>ShoppingCartServlet</display-name>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <servlet-class>observer.servlets.ShoppingCartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShoppingCartServlet</servlet-name>
+    <url-pattern>/ShoppingCartServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ObserverServlet</display-name>
+    <servlet-name>ObserverServlet</servlet-name>
+    <servlet-class>observer.servlets.ObserverServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description></description>
+    <display-name>RemoveObserver</display-name>
+    <servlet-name>RemoveObserver</servlet-name>
+    <servlet-class>observer.servlets.RemoveObserver</servlet-class>
+  </servlet>
+</web-app>
